@@ -1,4 +1,5 @@
 requests	
 aiogram
 python-dotenv
-flask
+fastapi
+uvicorn
