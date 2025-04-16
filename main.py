@@ -25,8 +25,18 @@ bot = Bot(
 dp = Dispatcher()
 chat_id = os.getenv("chat_id")
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # FastAPI app
 app = FastAPI()
+# Дозволяємо CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # або вкажи ['http://localhost:8080'] для безпеки
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/send")
 async def send_message(request: Request):
