@@ -3,3 +3,4 @@ aiogram
 python-dotenv
 fastapi
 uvicorn
+motor
