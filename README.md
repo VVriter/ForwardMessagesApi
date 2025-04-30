@@ -1,3 +1,7 @@
+# ForwartMessagesApi
+Sends messages into telegram after POST request to /send endpoint, with ability to block ip
+
+# Get started
 1. cp .env.sample .env
 2. edit .env with your args
 3. docker-compose up -d
