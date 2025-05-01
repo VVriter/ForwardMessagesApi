@@ -12,8 +12,6 @@ services:
     restart: unless-stopped
     depends_on:
       - mongo
-    environment:
-      MONGO_URI: mongodb://mongo:27017/agrodb  # Зміни назву БД за потреби
 
   mongo:
     image: mongo:6.0

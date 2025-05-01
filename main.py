@@ -12,18 +12,18 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import uvicorn
 
 # Mongo setup
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017/agrodb")
+MONGO_URI = os.getenv("MONGO_URI")
 mongo_client = AsyncIOMotorClient(MONGO_URI)
 db = mongo_client.get_default_database()
 blacklist = db.blacklist
 
 # Telegram bot
 bot = Bot(
-    token=os.getenv("token"),
+    token=os.getenv("TOKEN"),
     default=DefaultBotProperties(parse_mode=ParseMode.HTML)
 )
 dp = Dispatcher()
-chat_id = os.getenv("chat_id")
+chat_id = os.getenv("CHAT_ID")
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -34,11 +34,11 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # або вкажи ['http://localhost:8080'] для безпеки
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["POST"],
     allow_headers=["*"],
 )
 
-@app.post("/send")
+@app.post(f"/{os.getenv('ENDPOINT')}")
 async def send_message(request: Request):
     data = await request.json()
     message = data.get("message")
