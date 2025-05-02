@@ -1,5 +1,5 @@
 # ForwartMessagesApi
-Sends messages into telegram after POST request to /send endpoint, with ability to block ip
+Sends messages into telegram after POST request to /{endpoint-name} endpoint, with ability to block ip
 
 # Get started
 1. cp .env.sample .env
@@ -8,7 +8,7 @@ Sends messages into telegram after POST request to /send endpoint, with ability 
 4. enjoy!
 
 ```
-host: localhost:5000/send
+host: localhost:5000/{endpoint-name}
 method: POST
 args:
   - body: message (string)
